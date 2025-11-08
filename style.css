@@ -396,14 +396,11 @@ Companies styles
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  /* Break out of parent container for wider layout */
+  /* Break out of parent container for wider layout, centered */
   width: 100vw;
   max-width: 1200px;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 .company {
@@ -479,9 +476,6 @@ Companies styles
     /* Reset to normal width on mobile, left-aligned */
     width: 100%;
     max-width: 100%;
-    position: static;
-    left: auto;
-    right: auto;
     margin-left: 0;
     margin-right: 0;
   }
