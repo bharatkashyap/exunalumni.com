@@ -29,32 +29,6 @@
         }
       }
 
-      function parseYears(exunYear) {
-        // exunYear examples: "Exun 2011-12", "Exun 2015-16", "Exun 2012"
-        const match = (exunYear || "").match(/(\d{4})(?:-(\d{2}|\d{4}))?/);
-        if (!match) return { start: "", end: "", grad: "", display: "" };
-        const startFull = parseInt(match[1]);
-        const endPart = match[2];
-        const endFull = endPart
-          ? endPart.length === 2
-            ? Math.floor(startFull / 100) * 100 + parseInt(endPart)
-            : parseInt(endPart)
-          : startFull;
-        const startShort = String(startFull).slice(-2);
-        const endShort = String(endFull).slice(-2);
-        const display =
-          startFull === endFull
-            ? `'${startShort}`
-            : `'${startShort}-${endShort}`;
-        return { start: startFull, end: endFull, grad: endFull, display };
-      }
-
-      function toIntroAnchor(name, exunYear) {
-        const { grad } = parseYears(exunYear);
-        const slug = (name || "").trim().toLowerCase().replace(/\s+/g, "-");
-        return `${slug}-${grad}`;
-      }
-
       function showCompanies(list) {
         const mainContainer = document.getElementById("main-content");
         const container = document.getElementById("companies");
@@ -70,10 +44,11 @@
           div.className = "company";
           const id = `${item.name.replace(/\s+/g, "-").toLowerCase()}`;
           div.id = id;
-          const { grad, display } = parseYears(item.exun_year);
           
+          const yearShort = item.year ? `'${String(item.year).slice(-2)}` : "";
+
           const founderMarkup = item.founder_intro_anchor
-            ? `<a class="founder-link" href="/intro?year=${grad}#${item.founder_intro_anchor}">${item.founder}</a>`
+            ? `<a class="founder-link" href="/intro?year=${item.year}#${item.founder_intro_anchor}">${item.founder}</a>`
             : item.founder;
 
           div.innerHTML = `
@@ -87,7 +62,7 @@
             </p>
             <span class="meta">
               ${founderMarkup}
-              ${display ? ` • ${display}` : ""}
+              ${yearShort ? ` • ${yearShort}` : ""}
             </span>
           `;
           container.appendChild(div);
