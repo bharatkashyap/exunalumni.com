@@ -2,6 +2,7 @@ html {
   min-height: 100%;
   height: auto;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 :root {
@@ -109,6 +110,7 @@ ul {
   margin: 0;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 #main-nav li {
@@ -130,6 +132,16 @@ ul {
 
 #main-nav a.active {
   border-bottom: 2px solid var(--blue-sharp);
+}
+
+@media (max-width: 600px) {
+  #main-nav li {
+    margin: 0.25rem 0.5rem;
+  }
+
+  #main-nav a {
+    font-size: 0.9rem;
+  }
 }
 /*
  * Introduction page styles
@@ -373,6 +385,115 @@ select {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/*
+/*
+Companies styles
+*/
+
+#companies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  /* Break out of parent container for wider layout, centered */
+  width: 100vw;
+  max-width: 1200px;
+  margin-top: 10%;
+  margin-left: calc(-50%);
+}
+
+.company {
+  padding: 1rem;
+}
+
+/* continuous grid separators (not box borders) */
+#companies .company {
+  border-top: 1px solid var(--grey-lightest);
+  border-left: 1px solid var(--grey-lightest);
+}
+
+/* remove top border for first row (3 columns) */
+#companies .company:nth-child(-n + 3) {
+  border-top: none;
+}
+
+/* remove left border for first column (3 columns) */
+#companies .company:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.company .name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--blue-sharp);
+  margin-bottom: 10px;
+}
+
+.company .anchor-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.company .anchor-icon {
+  display: none;
+  margin-left: 5px;
+}
+
+.company .anchor-link:hover .anchor-icon {
+  display: inline-block;
+}
+
+.company .anchor-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+@media (max-width: 1024px) {
+  #companies {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* adjust separators for 2 columns */
+  #companies .company {
+    border-top: 1px solid var(--grey-lightest);
+    border-left: 1px solid var(--grey-lightest);
+  }
+
+  #companies .company:nth-child(-n + 2) {
+    border-top: none;
+  }
+
+  #companies .company:nth-child(2n + 1) {
+    border-left: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #companies {
+    grid-template-columns: 1fr;
+    /* Reset to normal width on mobile, left-aligned */
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Reset all borders first, then apply mobile separators */
+  #companies .company {
+    border-left: none;
+    border-top: none;
+  }
+
+  /* Add bottom border as separator between rows */
+  #companies .company {
+    border-bottom: 1px solid var(--grey-lightest);
+  }
+
+  #companies .company:last-child {
+    border-bottom: none;
+  }
 }
 
 /*

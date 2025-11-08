@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Wispr Flow",
+    "founder": "Tanay Kothari",
+    "url": "https://wisprflow.ai/",
+    "year": 2016
+  },
+  {
+    "name": "Affinity",
+    "founder": "Shubham Goel",
+    "url": "http://affinity.co/",
+    "year": 2012,
+    "founder_intro_anchor": "shubham-goel-2012"
+  },
+  {
+    "name": "Inception Labs",
+    "founder": "Aditya Grover",
+    "url": "https://www.inceptionlabs.ai/",
+    "year": 2011
+  },
+  {
+    "name": "Julep AI",
+    "founder": "Diwank Tomer",
+    "url": "https://julep.ai/",
+    "year": 2011,
+    "founder_intro_anchor": "diwank-2011"
+  },
+  {
+    "name": "Mirage (Formerly Captions)",
+    "founder": "Gaurav Misra",
+    "url": "https://mirage.app/",
+    "year": 2008
+  },
+  {
+    "name": "Fulcrum",
+    "founder": "Sambhav Anand",
+    "url": "https://www.withfulcrum.com/",
+    "year": 2016
+  }
+]

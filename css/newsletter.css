@@ -1,0 +1,88 @@
+/* Newsletter page styles */
+
+.newsletter {
+  padding: 20px 0px;
+  border-bottom: 1px solid var(--grey-lightest);
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.newsletter:hover .newsletter-title {
+  text-decoration: underline;
+}
+
+.newsletter-header {
+  display: flex;
+}
+
+.newsletter-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0px;
+  transition: color 0.3s ease;
+  color: var(--blue-dark);
+}
+
+.newsletter-title p {
+  margin: 0;
+}
+
+.newsletter-header .arrow {
+  margin-left: 8px;
+  color: var(--blue-dark);
+  font-weight: bold;
+}
+
+.newsletter-link {
+  text-decoration: none;
+}
+
+.newsletter-summary {
+  font-size: 1em;
+  color: var(--grey-light);
+  margin: 10px 0;
+}
+
+.newsletter-meta {
+  color: var(--blue-soft);
+  font-size: 0.9em;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.newsletter-divider {
+  color: var(--blue-soft);
+}
+
+.read-more {
+  background-color: var(--white);
+  color: var(--blue-soft);
+  border: none;
+  padding: 5px 0px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.year-section {
+  margin-bottom: 20px;
+}
+
+.year-title {
+  font-size: 1.3em;
+  color: var(--blue-dark);
+  margin: 20px 0px 0px 0px;
+}
+
+#search-input {
+  width: 95%;
+  padding: 0.5rem;
+  border: 1px solid var(--grey-lightest);
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-family: "Inter", sans-serif;
+}

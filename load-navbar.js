@@ -11,8 +11,7 @@ function setActiveNavLink() {
   const currentPage = window.location.pathname.split("/").pop();
   const navLinks = document.querySelectorAll("#main-nav a");
   navLinks.forEach((link) => {
-    console.log(link.getAttribute("href"), currentPage);
-    if (link.getAttribute("href") === currentPage) {
+    if (currentPage.includes(link.getAttribute("href"))) {
       link.classList.add("active");
     }
   });
