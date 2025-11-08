@@ -86,9 +86,14 @@ a:visited {
   margin: 5% auto 5% auto;
 }
 
+/* Companies page: allow full-width body so inner container can expand */
+.companies-page {
+  max-width: none;
+}
+
 /* Wider layout variant for companies page */
 .companies-page #main-content.wide {
-  max-width: 1080px;
+  max-width: 1200px;
   width: 95%;
 }
 

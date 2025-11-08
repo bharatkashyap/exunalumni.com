@@ -29,16 +29,27 @@
         }
       }
 
-      function toIntroAnchor(name, exunYear) {
+      function parseYears(exunYear) {
         // exunYear examples: "Exun 2011-12", "Exun 2015-16", "Exun 2012"
-        // We want the graduation year (typically the latter one)
         const match = (exunYear || "").match(/(\d{4})(?:-(\d{2}|\d{4}))?/);
-        let gradYear = match ? parseInt(match[2] ? (match[2].length === 2
-              ? Math.floor(parseInt(match[1]) / 100) * 100 + parseInt(match[2])
-              : match[2]) : match[1]) : "";
+        if (!match) return { start: "", end: "", grad: "", display: "" };
+        const startFull = parseInt(match[1]);
+        const endPart = match[2];
+        const endFull = endPart
+          ? (endPart.length === 2
+              ? Math.floor(startFull / 100) * 100 + parseInt(endPart)
+              : parseInt(endPart))
+          : startFull;
+        const startShort = String(startFull).slice(-2);
+        const endShort = String(endFull).slice(-2);
+        const display = startFull === endFull ? `'${startShort}` : `'${startShort}-${endShort}`;
+        return { start: startFull, end: endFull, grad: endFull, display };
+      }
 
+      function toIntroAnchor(name, exunYear) {
+        const { grad } = parseYears(exunYear);
         const slug = (name || "").trim().toLowerCase().replace(/\s+/g, "-");
-        return `${slug}-${gradYear}`;
+        return `${slug}-${grad}`;
       }
 
       function showCompanies(list) {
@@ -57,6 +68,7 @@
           const id = `${item.name.replace(/\s+/g, "-").toLowerCase()}`;
           div.id = id;
           const introAnchor = toIntroAnchor(item.founder, item.exun_year);
+          const { grad, display } = parseYears(item.exun_year);
           div.innerHTML = `
             <p class="name">
               <a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>
@@ -65,9 +77,10 @@
               </a>
             </p>
             <span class="meta">
-              <a class="founder-link" href="/intro#${introAnchor}">
-                ${item.founder} (${item.exun_year})
+              <a class="founder-link" href="/intro?year=${grad}#${introAnchor}">
+                ${item.founder}
               </a>
+              ${display ? ` • ${display}` : ""}
             </span>
           `;
           container.appendChild(div);
@@ -100,7 +113,7 @@
       alt="Exun Alumni Network Logo"
     />
     <div id="navbar-placeholder"></div>
-  <div id="main-content" class="wide">
+    <div id="main-content" class="wide">
       <h2>Companies</h2>
       <p>
         A list of companies started by Exun alumni. If you want yours added or updated, email us at
