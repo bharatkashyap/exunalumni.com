@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Wispr Flow",
+    "founder": "Tanay Kothari",
+    "url": "https://wisprflow.ai/",
+    "exun_year": "Exun 2015-16"
+  },
+  {
+    "name": "Affinity",
+    "founder": "Shubham Goel",
+    "url": "http://affinity.co/",
+    "exun_year": "Exun 2011-12"
+  },
+  {
+    "name": "Inception Labs",
+    "founder": "Aditya Grover",
+    "url": "https://www.inceptionlabs.ai/",
+    "exun_year": "Exun 2010-11"
+  },
+  {
+    "name": "Julep AI",
+    "founder": "Diwank Tomer",
+    "url": "https://julep.ai/",
+    "exun_year": "Exun 2010-11"
+  },
+  {
+    "name": "Mirage (Formerly Captions)",
+    "founder": "Gaurav Misra",
+    "url": "https://mirage.app/",
+    "exun_year": "Exun 2007-08"
+  },
+  {
+    "name": "Fulcrum",
+    "founder": "Sambhav Anand",
+    "url": "https://www.withfulcrum.com/",
+    "exun_year": "Exun 2015-16"
+  }
+]

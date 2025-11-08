@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exun Alumni Network - Companies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      let companies = [];
+
+      function init() {
+        loadCompanies();
+      }
+
+      async function loadCompanies() {
+        try {
+          const response = await fetch("/data/companies.json");
+          companies = await response.json();
+          companies.sort((a, b) => a.name.localeCompare(b.name));
+          showCompanies(companies);
+        } catch (error) {
+          console.error("Error loading companies:", error);
+        }
+      }
+
+      function showCompanies(list) {
+        const mainContainer = document.getElementById("main-content");
+        const container = document.getElementById("companies");
+        container.innerHTML = "";
+
+        const skeletonContainer = document.getElementById("skeleton-container");
+        if (skeletonContainer) {
+          mainContainer.removeChild(skeletonContainer);
+        }
+
+        list.forEach((item) => {
+          const div = document.createElement("div");
+          div.className = "company";
+          const id = `${item.name.replace(/\s+/g, "-").toLowerCase()}`;
+          div.id = id;
+          div.innerHTML = `
+            <p class="name">
+              <a href="#${id}" class="anchor-link" title="Link to this company">
+                <a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>
+                <span class="anchor-icon"><svg><use xlink:href="#anchor-link-icon"></use></svg></span>
+              </a>
+            </p>
+            <span class="meta">Founded by: ${item.founder}</span>
+            <span class="divider">|</span>
+            <span class="meta">${item.exun_year}</span>
+          `;
+          container.appendChild(div);
+        });
+      }
+
+      window.addEventListener("DOMContentLoaded", init);
+    </script>
+    <script src="load-navbar.js"></script>
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+      <symbol id="anchor-link-icon" viewBox="0 0 15 15">
+        <path
+          d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"
+        />
+        <path
+          d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"
+        />
+      </symbol>
+    </svg>
+    <h1 id="sticky-header">
+      EXUN ALUMNI <br />
+      NETWORK
+    </h1>
+
+    <img
+      id="logo"
+      src="https://newsletter.bharatk.in/uploads/Vector.svg"
+      alt="Exun Alumni Network Logo"
+    />
+    <div id="navbar-placeholder"></div>
+    <div id="main-content">
+      <h2>Companies</h2>
+      <p>
+        A list of companies founded by Exun alumni. If you want yours added or updated, email us at
+        <a href="mailto:hello@exunalumni.com">hello@exunalumni.com</a>.
+      </p>
+
+      <div id="skeleton-container">
+        <div class="skeleton-name skeleton"></div>
+        <div class="skeleton-text skeleton"></div>
+        <div class="skeleton-text skeleton"></div>
+        <div class="skeleton-text skeleton"></div>
+      </div>
+
+      <div id="companies"></div>
+    </div>
+  </body>
+</html>

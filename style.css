@@ -376,6 +376,47 @@ select {
 }
 
 /*
+Companies styles
+*/
+
+.company {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--grey-lightest);
+}
+
+.company:last-child {
+  border-bottom: none;
+}
+
+.company .name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--blue-sharp);
+  margin-bottom: 10px;
+}
+
+.company .anchor-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.company .anchor-icon {
+  display: none;
+  margin-left: 5px;
+}
+
+.company .anchor-link:hover .anchor-icon {
+  display: inline-block;
+}
+
+.company .anchor-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+/*
 Newsletter styles
 */
 
