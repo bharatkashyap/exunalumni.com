@@ -138,7 +138,7 @@ ul {
   #main-nav li {
     margin: 0.25rem 0.5rem;
   }
-  
+
   #main-nav a {
     font-size: 0.9rem;
   }
@@ -399,8 +399,8 @@ Companies styles
   /* Break out of parent container for wider layout, centered */
   width: 100vw;
   max-width: 1200px;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  margin-top: 10%;
+  margin-left: calc(-50%);
 }
 
 .company {
@@ -480,14 +480,19 @@ Companies styles
     margin-right: 0;
   }
 
-  /* for single column: horizontal separators between rows */
+  /* Reset all borders first, then apply mobile separators */
   #companies .company {
     border-left: none;
-    border-top: 1px solid var(--grey-lightest);
+    border-top: none;
   }
   
-  #companies .company:first-child {
-    border-top: none;
+  /* Add bottom border as separator between rows */
+  #companies .company {
+    border-bottom: 1px solid var(--grey-lightest);
+  }
+
+  #companies .company:last-child {
+    border-bottom: none;
   }
 }
 
