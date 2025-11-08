@@ -86,6 +86,12 @@ a:visited {
   margin: 5% auto 5% auto;
 }
 
+/* Wider layout variant for companies page */
+.companies-page #main-content.wide {
+  max-width: 1080px;
+  width: 95%;
+}
+
 .highlight {
   background-color: var(--grey-slate);
   padding: 10px;

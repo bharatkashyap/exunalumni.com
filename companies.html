@@ -51,9 +51,7 @@
                 <span class="anchor-icon"><svg><use xlink:href="#anchor-link-icon"></use></svg></span>
               </a>
             </p>
-            <span class="meta">Founded by: ${item.founder}</span>
-            <span class="divider">|</span>
-            <span class="meta">${item.exun_year}</span>
+            <span class="meta">by ${item.founder} • ${item.exun_year}</span>
           `;
           container.appendChild(div);
         });
@@ -63,7 +61,7 @@
     </script>
     <script src="load-navbar.js"></script>
   </head>
-  <body>
+  <body class="companies-page">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="anchor-link-icon" viewBox="0 0 15 15">
         <path
@@ -85,10 +83,10 @@
       alt="Exun Alumni Network Logo"
     />
     <div id="navbar-placeholder"></div>
-    <div id="main-content">
+  <div id="main-content" class="wide">
       <h2>Companies</h2>
       <p>
-        A list of companies founded by Exun alumni. If you want yours added or updated, email us at
+        A list of companies started by Exun alumni. If you want yours added or updated, email us at
         <a href="mailto:hello@exunalumni.com">hello@exunalumni.com</a>.
       </p>
 
