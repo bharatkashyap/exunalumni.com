@@ -91,10 +91,11 @@ a:visited {
   max-width: none;
 }
 
-/* Wider layout variant for companies page */
-.companies-page #main-content.wide {
+/* Wider layout variant for companies grid only */
+.companies-page #companies.wide {
   max-width: 1200px;
   width: 95%;
+  margin: 0 auto;
 }
 
 .highlight {
