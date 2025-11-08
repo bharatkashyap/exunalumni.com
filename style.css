@@ -382,13 +382,27 @@ Companies styles
 #companies {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 0; /* continuous grid lines require no gaps */
 }
 
 .company {
-  border: 1px solid var(--grey-lightest);
-  border-radius: 6px;
   padding: 1rem;
+}
+
+/* continuous grid separators (not box borders) */
+#companies .company {
+  border-top: 1px solid var(--grey-lightest);
+  border-left: 1px solid var(--grey-lightest);
+}
+
+/* remove top border for first row (3 columns) */
+#companies .company:nth-child(-n + 3) {
+  border-top: none;
+}
+
+/* remove left border for first column (3 columns) */
+#companies .company:nth-child(3n + 1) {
+  border-left: none;
 }
 
 .company .name {
@@ -422,11 +436,33 @@ Companies styles
   #companies {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* adjust separators for 2 columns */
+  #companies .company {
+    border-top: 1px solid var(--grey-lightest);
+    border-left: 1px solid var(--grey-lightest);
+  }
+
+  #companies .company:nth-child(-n + 2) {
+    border-top: none;
+  }
+
+  #companies .company:nth-child(2n + 1) {
+    border-left: none;
+  }
 }
 
 @media (max-width: 600px) {
   #companies {
     grid-template-columns: 1fr;
+  }
+
+  /* for single column: only horizontal separators */
+  #companies .company {
+    border-left: none;
+  }
+  #companies .company:first-child {
+    border-top: none;
   }
 }
 
