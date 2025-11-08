@@ -65,12 +65,6 @@
           mainContainer.removeChild(skeletonContainer);
         }
 
-        // Map of founders who have intros (name -> anchor)
-        const foundersWithIntros = {
-          "Shubham Goel": "shubham-goel-2012",
-          "Diwank Tomer": "diwank-2011"
-        };
-
         list.forEach((item) => {
           const div = document.createElement("div");
           div.className = "company";
@@ -78,9 +72,8 @@
           div.id = id;
           const { grad, display } = parseYears(item.exun_year);
           
-          const hasIntro = foundersWithIntros[item.founder];
-          const founderMarkup = hasIntro
-            ? `<a class="founder-link" href="/intro?year=${grad}#${foundersWithIntros[item.founder]}">${item.founder}</a>`
+          const founderMarkup = item.founder_intro_anchor
+            ? `<a class="founder-link" href="/intro?year=${grad}#${item.founder_intro_anchor}">${item.founder}</a>`
             : item.founder;
 
           div.innerHTML = `
