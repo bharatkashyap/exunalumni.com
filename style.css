@@ -110,6 +110,7 @@ ul {
   margin: 0;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 #main-nav li {
@@ -131,6 +132,16 @@ ul {
 
 #main-nav a.active {
   border-bottom: 2px solid var(--blue-sharp);
+}
+
+@media (max-width: 600px) {
+  #main-nav li {
+    margin: 0.25rem 0.5rem;
+  }
+  
+  #main-nav a {
+    font-size: 0.9rem;
+  }
 }
 /*
  * Introduction page styles
@@ -465,7 +476,7 @@ Companies styles
 @media (max-width: 600px) {
   #companies {
     grid-template-columns: 1fr;
-    /* Reset to normal width on mobile */
+    /* Reset to normal width on mobile, left-aligned */
     width: 100%;
     max-width: 100%;
     position: static;
@@ -475,10 +486,12 @@ Companies styles
     margin-right: 0;
   }
 
-  /* for single column: only horizontal separators */
+  /* for single column: horizontal separators between rows */
   #companies .company {
     border-left: none;
+    border-top: 1px solid var(--grey-lightest);
   }
+  
   #companies .company:first-child {
     border-top: none;
   }
