@@ -22,12 +22,6 @@
           .catch((error) => {
             console.error("Error loading newsletters:", error);
           });
-
-        const searchInput = document.getElementById("search-input");
-        searchInput.addEventListener("input", function () {
-          const query = searchInput.value.toLowerCase();
-          filterNewsletters(query);
-        });
       });
 
       function groupNewslettersByYear(newsletters) {
@@ -46,12 +40,20 @@
         const newsletterContainer = document.getElementById("newsletters");
         newsletterContainer.innerHTML = "";
 
-        Object.keys(groupedNewsletters).forEach((year) => {
+        // Sort years in descending order (most recent first)
+        const sortedYears = Object.keys(groupedNewsletters).sort((a, b) => b - a);
+
+        sortedYears.forEach((year) => {
           const yearSection = document.createElement("div");
           yearSection.className = "year-section";
           yearSection.innerHTML = `<h3 class="year-title">${year}</h3>`;
 
-          groupedNewsletters[year].forEach((newsletter) => {
+          // Sort newsletters within each year by date (most recent first)
+          const sortedNewsletters = groupedNewsletters[year].sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+          });
+
+          sortedNewsletters.forEach((newsletter) => {
             const div = document.createElement("div");
             div.className = "newsletter";
 
@@ -71,23 +73,6 @@
           });
 
           newsletterContainer.appendChild(yearSection);
-        });
-      }
-
-      function filterNewsletters(query) {
-        const newsletters = document.querySelectorAll(".newsletter");
-        newsletters.forEach((newsletter) => {
-          const title = newsletter
-            .querySelector(".newsletter-title p")
-            .innerText.toLowerCase();
-          const summary = newsletter
-            .querySelector(".newsletter-summary")
-            .innerText.toLowerCase();
-          if (title.includes(query) || summary.includes(query)) {
-            newsletter.style.display = "block";
-          } else {
-            newsletter.style.display = "none";
-          }
         });
       }
     </script>
@@ -111,12 +96,6 @@
         A collection of all newsletters for the Exun Alumni Network. Catch up on
         the latest updates and stories from our community.
       </p>
-
-      <input
-        type="text"
-        id="search-input"
-        placeholder="Search newsletters..."
-      />
 
       <div id="newsletters"></div>
     </div>
