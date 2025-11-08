@@ -22,12 +22,6 @@
           .catch((error) => {
             console.error("Error loading newsletters:", error);
           });
-
-        const searchInput = document.getElementById("search-input");
-        searchInput.addEventListener("input", function () {
-          const query = searchInput.value.toLowerCase();
-          filterNewsletters(query);
-        });
       });
 
       function groupNewslettersByYear(newsletters) {
@@ -73,23 +67,6 @@
           newsletterContainer.appendChild(yearSection);
         });
       }
-
-      function filterNewsletters(query) {
-        const newsletters = document.querySelectorAll(".newsletter");
-        newsletters.forEach((newsletter) => {
-          const title = newsletter
-            .querySelector(".newsletter-title p")
-            .innerText.toLowerCase();
-          const summary = newsletter
-            .querySelector(".newsletter-summary")
-            .innerText.toLowerCase();
-          if (title.includes(query) || summary.includes(query)) {
-            newsletter.style.display = "block";
-          } else {
-            newsletter.style.display = "none";
-          }
-        });
-      }
     </script>
     <script src="load-navbar.js"></script>
   </head>
@@ -111,12 +88,6 @@
         A collection of all newsletters for the Exun Alumni Network. Catch up on
         the latest updates and stories from our community.
       </p>
-
-      <input
-        type="text"
-        id="search-input"
-        placeholder="Search newsletters..."
-      />
 
       <div id="newsletters"></div>
     </div>
