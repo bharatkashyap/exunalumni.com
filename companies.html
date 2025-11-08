@@ -36,13 +36,16 @@
         const startFull = parseInt(match[1]);
         const endPart = match[2];
         const endFull = endPart
-          ? (endPart.length === 2
-              ? Math.floor(startFull / 100) * 100 + parseInt(endPart)
-              : parseInt(endPart))
+          ? endPart.length === 2
+            ? Math.floor(startFull / 100) * 100 + parseInt(endPart)
+            : parseInt(endPart)
           : startFull;
         const startShort = String(startFull).slice(-2);
         const endShort = String(endFull).slice(-2);
-        const display = startFull === endFull ? `'${startShort}` : `'${startShort}-${endShort}`;
+        const display =
+          startFull === endFull
+            ? `'${startShort}`
+            : `'${startShort}-${endShort}`;
         return { start: startFull, end: endFull, grad: endFull, display };
       }
 
@@ -62,24 +65,35 @@
           mainContainer.removeChild(skeletonContainer);
         }
 
+        // Map of founders who have intros (name -> anchor)
+        const foundersWithIntros = {
+          "Shubham Goel": "shubham-goel-2012",
+          "Diwank Tomer": "diwank-2011"
+        };
+
         list.forEach((item) => {
           const div = document.createElement("div");
           div.className = "company";
           const id = `${item.name.replace(/\s+/g, "-").toLowerCase()}`;
           div.id = id;
-          const introAnchor = toIntroAnchor(item.founder, item.exun_year);
           const { grad, display } = parseYears(item.exun_year);
+          
+          const hasIntro = foundersWithIntros[item.founder];
+          const founderMarkup = hasIntro
+            ? `<a class="founder-link" href="/intro?year=${grad}#${foundersWithIntros[item.founder]}">${item.founder}</a>`
+            : item.founder;
+
           div.innerHTML = `
             <p class="name">
-              <a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>
+              <a href="${item.url}" target="_blank" rel="noopener">${
+            item.name
+          }</a>
               <a href="#${id}" class="anchor-link" title="Link to this company">
                 <span class="anchor-icon"><svg><use xlink:href="#anchor-link-icon"></use></svg></span>
               </a>
             </p>
             <span class="meta">
-              <a class="founder-link" href="/intro?year=${grad}#${introAnchor}">
-                ${item.founder}
-              </a>
+              ${founderMarkup}
               ${display ? ` • ${display}` : ""}
             </span>
           `;
@@ -91,7 +105,7 @@
     </script>
     <script src="load-navbar.js"></script>
   </head>
-  <body class="companies-page">
+  <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
       <symbol id="anchor-link-icon" viewBox="0 0 15 15">
         <path
@@ -116,7 +130,8 @@
     <div id="main-content">
       <h2>Companies</h2>
       <p>
-        A list of companies started by Exun alumni. If you want yours added or updated, email us at
+        A list of companies started by Exun alumni. If you want yours added or
+        updated, email us at
         <a href="mailto:hello@exunalumni.com">hello@exunalumni.com</a>.
       </p>
 
@@ -127,7 +142,7 @@
         <div class="skeleton-text skeleton"></div>
       </div>
 
-      <div id="companies" class="wide"></div>
+      <div id="companies"></div>
     </div>
   </body>
 </html>

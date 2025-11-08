@@ -86,17 +86,7 @@ a:visited {
   margin: 5% auto 5% auto;
 }
 
-/* Companies page: allow full-width body so inner container can expand */
-.companies-page {
-  max-width: none;
-}
 
-/* Wider layout variant for companies grid only */
-.companies-page #companies.wide {
-  max-width: 1200px;
-  width: 95%;
-  margin: 0 auto;
-}
 
 .highlight {
   background-color: var(--grey-slate);
