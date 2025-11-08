@@ -46,8 +46,8 @@
           div.id = id;
           div.innerHTML = `
             <p class="name">
+              <a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>
               <a href="#${id}" class="anchor-link" title="Link to this company">
-                <a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>
                 <span class="anchor-icon"><svg><use xlink:href="#anchor-link-icon"></use></svg></span>
               </a>
             </p>

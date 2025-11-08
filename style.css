@@ -379,14 +379,16 @@ select {
 Companies styles
 */
 
-.company {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--grey-lightest);
+#companies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
-.company:last-child {
-  border-bottom: none;
+.company {
+  border: 1px solid var(--grey-lightest);
+  border-radius: 6px;
+  padding: 1rem;
 }
 
 .company .name {
@@ -414,6 +416,18 @@ Companies styles
   width: 15px;
   height: 15px;
   fill: currentColor;
+}
+
+@media (max-width: 1024px) {
+  #companies {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #companies {
+    grid-template-columns: 1fr;
+  }
 }
 
 /*
