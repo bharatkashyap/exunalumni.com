@@ -2,6 +2,7 @@ html {
   min-height: 100%;
   height: auto;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 :root {
@@ -85,8 +86,6 @@ a:visited {
   width: 95%;
   margin: 5% auto 5% auto;
 }
-
-
 
 .highlight {
   background-color: var(--grey-slate);
@@ -378,13 +377,22 @@ select {
 }
 
 /*
+/*
 Companies styles
 */
 
 #companies {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0; /* continuous grid lines require no gaps */
+  gap: 0;
+  /* Break out of parent container for wider layout */
+  width: 100vw;
+  max-width: 1200px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .company {
@@ -457,6 +465,14 @@ Companies styles
 @media (max-width: 600px) {
   #companies {
     grid-template-columns: 1fr;
+    /* Reset to normal width on mobile */
+    width: 100%;
+    max-width: 100%;
+    position: static;
+    left: auto;
+    right: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   /* for single column: only horizontal separators */
