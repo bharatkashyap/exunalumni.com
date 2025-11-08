@@ -1,0 +1,37 @@
+/* Introduction page styles */
+
+.introduction {
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--grey-lightest);
+  padding-bottom: 20px;
+}
+
+.introduction:last-child {
+  border-bottom: none;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 15px;
+}
+
+.year {
+  font-size: 0.9em;
+  color: var(--grey);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.country {
+  font-size: 0.8em;
+  color: var(--grey-darker);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-top: 10px;
+}

@@ -10,7 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/companies.css" />
     <script>
       let companies = [];
 
@@ -56,13 +60,7 @@
               <a href="${item.url}" target="_blank" rel="noopener">${
             item.name
           }</a>
-              <a href="#${id}" class="anchor-link" title="Link to this company">
-                <span class="anchor-icon">
-                  <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
-                    <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
-                    <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
-                  </svg>
-                </span>
+              <a href="#${id}" class="anchor-link" title="Link to this company">                
               </a>
             </p>
             <span class="meta">

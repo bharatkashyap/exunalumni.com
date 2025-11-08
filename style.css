@@ -485,7 +485,7 @@ Companies styles
     border-left: none;
     border-top: none;
   }
-  
+
   /* Add bottom border as separator between rows */
   #companies .company {
     border-bottom: 1px solid var(--grey-lightest);
