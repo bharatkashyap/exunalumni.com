@@ -17,18 +17,20 @@
 
 /* continuous grid separators (not box borders) */
 #companies .company {
-  border-top: 1px solid var(--grey-lightest);
-  border-left: 1px solid var(--grey-lightest);
+  border-right: 1px solid var(--grey-lightest);
+  border-bottom: 1px solid var(--grey-lightest);
 }
 
-/* remove top border for first row (3 columns) */
-#companies .company:nth-child(-n + 3) {
-  border-top: none;
+/* remove right border for last column */
+#companies .company:nth-child(3n) {
+  border-right: none;
 }
 
-/* remove left border for first column (3 columns) */
-#companies .company:nth-child(3n + 1) {
-  border-left: none;
+/* remove bottom border for last row */
+#companies .company:nth-last-child(-n + 3):nth-child(3n + 1),
+#companies .company:nth-last-child(-n + 3):nth-child(3n + 2),
+#companies .company:nth-last-child(-n + 3):nth-child(3n) {
+  border-bottom: none;
 }
 
 .company .name {
@@ -50,16 +52,18 @@
 
   /* adjust separators for 2 columns */
   #companies .company {
-    border-top: 1px solid var(--grey-lightest);
-    border-left: 1px solid var(--grey-lightest);
+    border-right: 1px solid var(--grey-lightest);
+    border-bottom: 1px solid var(--grey-lightest);
   }
 
-  #companies .company:nth-child(-n + 2) {
-    border-top: none;
+  #companies .company:nth-child(2n) {
+    border-right: none;
   }
 
-  #companies .company:nth-child(2n + 1) {
-    border-left: none;
+  /* remove bottom border for last row */
+  #companies .company:nth-last-child(-n + 2):nth-child(2n + 1),
+  #companies .company:nth-last-child(-n + 2):nth-child(2n) {
+    border-bottom: none;
   }
 }
 
