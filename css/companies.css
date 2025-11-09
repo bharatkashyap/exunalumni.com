@@ -26,10 +26,10 @@
   border-right: none;
 }
 
-/* remove bottom border for last row */
-#companies .company:nth-last-child(-n + 3):nth-child(3n + 1),
-#companies .company:nth-last-child(-n + 3):nth-child(3n + 2),
-#companies .company:nth-last-child(-n + 3):nth-child(3n) {
+/* remove bottom border for last row - simpler approach */
+#companies .company:nth-last-child(1),
+#companies .company:nth-last-child(2),
+#companies .company:nth-last-child(3) {
   border-bottom: none;
 }
 
@@ -61,8 +61,8 @@
   }
 
   /* remove bottom border for last row */
-  #companies .company:nth-last-child(-n + 2):nth-child(2n + 1),
-  #companies .company:nth-last-child(-n + 2):nth-child(2n) {
+  #companies .company:nth-last-child(1),
+  #companies .company:nth-last-child(2) {
     border-bottom: none;
   }
 }
