@@ -17,18 +17,21 @@
 
 /* continuous grid separators (not box borders) */
 #companies .company {
-  border-top: 1px solid var(--grey-lightest);
-  border-left: 1px solid var(--grey-lightest);
+  border-right: 1px solid var(--grey-lightest);
+  border-bottom: 1px solid var(--grey-lightest);
 }
 
-/* remove top border for first row (3 columns) */
-#companies .company:nth-child(-n + 3) {
-  border-top: none;
+/* remove right border for last column */
+#companies .company:nth-child(3n) {
+  border-right: none;
 }
 
-/* remove left border for first column (3 columns) */
-#companies .company:nth-child(3n + 1) {
-  border-left: none;
+/* remove bottom border only for items in the actual last row */
+/* This checks if an item is one of the last 1, 2, or 3 items AND in the last row position */
+#companies .company:last-child,
+#companies .company:nth-last-child(2):nth-child(3n-1),
+#companies .company:nth-last-child(3):nth-child(3n-2) {
+  border-bottom: none;
 }
 
 .company .name {
@@ -43,23 +46,39 @@
   border-radius: 10px;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 601px) and (max-width: 1024px) {
   #companies {
     grid-template-columns: repeat(2, 1fr);
+    /* Center the grid on tablet */
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
 
-  /* adjust separators for 2 columns */
+  /* Reset desktop rules and apply 2-column separators */
   #companies .company {
-    border-top: 1px solid var(--grey-lightest);
-    border-left: 1px solid var(--grey-lightest);
+    border-right: 1px solid var(--grey-lightest);
+    border-bottom: 1px solid var(--grey-lightest);
   }
 
-  #companies .company:nth-child(-n + 2) {
-    border-top: none;
+  /* Remove desktop-specific nth-child rules */
+  #companies .company:nth-child(3n) {
+    border-right: 1px solid var(--grey-lightest);
+  }
+  
+  #companies .company:nth-last-child(2):nth-child(3n-1),
+  #companies .company:nth-last-child(3):nth-child(3n-2) {
+    border-bottom: 1px solid var(--grey-lightest);
   }
 
-  #companies .company:nth-child(2n + 1) {
-    border-left: none;
+  /* Apply 2-column rules */
+  #companies .company:nth-child(2n) {
+    border-right: none;
+  }
+
+  /* remove bottom border only for items in the actual last row (2 columns) */
+  #companies .company:last-child,
+  #companies .company:nth-last-child(2):nth-child(2n) {
+    border-bottom: none;
   }
 }
 
@@ -73,18 +92,15 @@
     margin-right: 0;
   }
 
-  /* Reset all borders first, then apply mobile separators */
+  /* Reset all borders and override all other rules */
   #companies .company {
-    border-left: none;
-    border-top: none;
-  }
-  
-  /* Add bottom border as separator between rows */
-  #companies .company {
-    border-bottom: 1px solid var(--grey-lightest);
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--grey-lightest) !important;
   }
 
   #companies .company:last-child {
-    border-bottom: none;
+    border-bottom: none !important;
   }
 }

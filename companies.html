@@ -50,9 +50,13 @@
           ? `<a class="founder-link" href="/intro?year=${item.year}#${item.founder_intro_anchor}">${item.founder}</a>`
           : item.founder;
 
+        const logoWidth = item.logo_width 
+          ? `clamp(120px, ${item.logo_width}px, 90vw)` 
+          : '64px';
+
         div.innerHTML = `
           <a href="${item.url}" target="_blank" rel="noopener">
-            <img src="${item.logo}" alt="${item.name} Logo" class="company-logo" />
+            <img src="${item.logo}" alt="${item.name} Logo" class="company-logo" style="width: ${logoWidth}" />
             </a>
             <p class="name">
               <a href="${item.url}" target="_blank" rel="noopener">${item.name
