@@ -20,7 +20,8 @@
     "url": "https://notarease.com",
     "year": 2015,
     "founder_intro_anchor": "karmanya-singh-2015",
-    "logo": "img/companies/notarease.png"
+    "logo": "img/companies/notarease.png",
+    "logo_width": 200
   },
   {
     "name": "Inception Labs",
