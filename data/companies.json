@@ -22,12 +22,12 @@
     "logo": "img/companies/inception.jpg"
   },
   {
-    "name": "Julep AI",
+    "name": "memory.store",
     "founder": "Diwank Tomer",
-    "url": "https://julep.ai/",
+    "url": "https://memory.store/",
     "year": 2011,
     "founder_intro_anchor": "diwank-2011",
-    "logo": "img/companies/julep.jpeg"
+    "logo": "img/companies/memorystore.jpeg"
   },
   {
     "name": "Mirage (Formerly Captions)",
@@ -42,5 +42,19 @@
     "url": "https://www.withfulcrum.com/",
     "year": 2016,
     "logo": "img/companies/fulcrum.jpg"
+  },
+  {
+    "name": "Traqcheck",
+    "founder": "Rishabh Jain",
+    "url": "https://traqcheck.com/",
+    "year": 2016,
+    "logo": "img/companies/traqcheck.jpeg"
+  },
+  {
+    "name": "OpenHack",
+    "founder": "Ananay Arora",
+    "url": "https://openhack.com",
+    "year": 2017,
+    "logo": "img/companies/openhack.jpg"
   }
 ]
